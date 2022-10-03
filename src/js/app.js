@@ -4,8 +4,8 @@ const char1 = {
   health: 50,
   level: 1,
   attack: 40,
-  defence: 10
-}
+  defence: 10,
+};
 
 const char2 = {
   name: 'Демон',
@@ -13,8 +13,8 @@ const char2 = {
   health: 40,
   level: 5,
   attack: 60,
-  defence: 5
-}
+  defence: 5,
+};
 
 const char3 = {
   name: 'Маг',
@@ -22,24 +22,28 @@ const char3 = {
   health: 80,
   level: 3,
   attack: 65,
-  defence: 11
-}
+  defence: 11,
+};
 
-const person = [char1, char2, char3]
+const person = [char1, char2, char3];
 
 class Team {
   constructor() {
     this.person = person;
   }
+
   [Symbol.iterator]() {
     let index = -1;
-    let data  = this.person;
+    const data = this.person;
     return {
-      next: () => ({ value: data[++index], done: !(index in data) })
+      next: () => ({
+        value: data[++index],
+        done: !(index in data),
+      }),
     };
-  };
   }
+}
 const obj = new Team();
-for (let i of obj) {
-  console.log(i)
+for (const item of obj) {
+  console.log(item);
 }
